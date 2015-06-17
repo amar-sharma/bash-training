@@ -13,8 +13,14 @@ case $key in
     shift
     ;;
     *)
+    echo " Usage: " $0 "-f LOGFILE"
+    exit 1
     ;;
 esac
 shift
 done
+if [ ! -f $FILE ]; then
+    echo "File not found!: "$FILE
+    exit 1
+fi
 awk -f parse.awk $FILE
